@@ -3,12 +3,11 @@
         welcome to the first page
     </div>
 </template>
-<script setup>
-import layout from '@/layouts/layout.vue'
-</script>
 
 <script>
+import layout from '@/layouts/layout2.vue'
 export default {
     layout: layout
 }
 </script>
+
