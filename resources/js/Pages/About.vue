@@ -1,5 +1,5 @@
 <template>
     <div>
-        welcome to the first page
+        welcome to the about
     </div>
 </template>
