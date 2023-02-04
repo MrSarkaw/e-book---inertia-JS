@@ -5,6 +5,9 @@
     @vite('resources/js/app.js')
     @inertiaHead
   </head>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
   <body>
     @inertia
   </body>

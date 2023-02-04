@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -16,3 +17,9 @@ Route::get('/about', function () {
 Route::get('/contact', function () {
     return Inertia::render('Contact');
 });
+
+
+Route::prefix('admin')->group(function(){
+    Route::resource('user', UserController::class);
+});
+
