@@ -1,5 +1,10 @@
 <template>
-    <Link href="/admin/user/create" class="p-2 px-4 bg-green-600 text-white font-bold">Create</Link>
+    <div class="flex justify-between items-center">
+        <Link href="/admin/user/create" class="p-2 px-4 bg-green-600 text-white font-bold">Create</Link>
+        <div>
+            <input type="text" class="bg-gray-200 p-2 rounded-lg text-black" v-model="search">
+        </div>
+    </div>
     <table class="w-full mt-10 shadow-sm">
         <thead class="bg-gray-700 text-white">
             <tr>
@@ -25,16 +30,31 @@
         class="px-3 py-2 rounded shadow"
         :href="item.url"
         :class="[!item.url?'bg-gray-200':'', data.current_page == item.label ? 'bg-blue-400 text-white' :'']"
+        preserve-scroll
         ></Link>
     </div>
 </template>
 
 <script setup>
-import {Link} from '@inertiajs/vue3'
+import {Link, router} from '@inertiajs/vue3'
 defineProps(['data'])
+
+let search = ref('')
+
+watch(search, value=>{
+    router.get('/admin/user',{
+        q:value
+    },{
+        preserveState:true,
+    })
+})
 </script>
+
+
 <script>
 import layout from '@/layouts/admin.vue'
+import { ref } from '@vue/reactivity'
+import { watch } from '@vue/runtime-core'
 export default{
     layout:layout
 }

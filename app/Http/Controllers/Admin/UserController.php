@@ -9,8 +9,11 @@ use Inertia\Inertia;
 
 class UserController extends Controller
 {
-    public function index(){
-        $user= User::paginate(10);
+    public function index(Request $request){
+        $user= User::when($request->q, function($q) use($request){
+            $q->where('name', 'LIKE', '%'.$request->q.'%');
+        })->paginate(10);
+
         return Inertia::render('Admin/User/Index',[
             'data' => $user
         ]);
