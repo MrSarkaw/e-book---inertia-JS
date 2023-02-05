@@ -37,17 +37,20 @@
 
 <script setup>
 import {Link, router} from '@inertiajs/vue3'
-defineProps(['data'])
+let props = defineProps(['data', 'q'])
 
-let search = ref('')
+let search = ref(props.q)
 
 watch(search, value=>{
     router.get('/admin/user',{
-        q:value
+        q:value,
     },{
         preserveState:true,
+        preserveScroll:true
     })
 })
+
+
 </script>
 
 

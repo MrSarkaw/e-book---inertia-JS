@@ -12,10 +12,11 @@ class UserController extends Controller
     public function index(Request $request){
         $user= User::when($request->q, function($q) use($request){
             $q->where('name', 'LIKE', '%'.$request->q.'%');
-        })->paginate(10);
+        })->paginate(10)->withQueryString();
 
         return Inertia::render('Admin/User/Index',[
-            'data' => $user
+            'data' => $user,
+            'q' => $request->q
         ]);
     }
 
