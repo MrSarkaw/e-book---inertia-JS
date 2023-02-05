@@ -10,7 +10,10 @@ use Inertia\Inertia;
 class UserController extends Controller
 {
     public function index(){
-        return Inertia::render('Admin/User/Index');
+        $user= User::all();
+        return Inertia::render('Admin/User/Index',[
+            'data' => $user
+        ]);
     }
 
     public function create(){

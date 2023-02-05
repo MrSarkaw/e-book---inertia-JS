@@ -1,6 +1,7 @@
 <template>
     <div class="bg-gray-100 p-2 roounded shadow">
-        <p>User Form</p>
+        <p class="mb-6">User Form</p>
+        <Link href="/admin/user" class="p-2 px-4 bg-blue-600 text-white font-bold">Back</Link>
 
         <form @submit.prevent="store()">
             <div class="grid grid-cols-3 gap-10 mt-10">
@@ -33,9 +34,10 @@
 import layout from '@/layouts/admin.vue'
 import { reactive, ref } from '@vue/reactivity'
 import { router } from '@inertiajs/core'
-import { useForm } from '@inertiajs/vue3'
+import { Link, useForm } from '@inertiajs/vue3'
 export default{
-    layout:layout
+    layout: layout,
+    components: { Link }
 }
 
 </script>
