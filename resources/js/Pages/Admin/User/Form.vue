@@ -1,7 +1,7 @@
 <template>
     <div class="bg-gray-100 p-2 roounded shadow">
         <p class="mb-6">User Form</p>
-        <Link href="/admin/user" class="p-2 px-4 bg-blue-600 text-white font-bold">Back</Link>
+        <Link :href="route('admin.users.index')" class="p-2 px-4 bg-blue-600 text-white font-bold">Back</Link>
 
         <form @submit.prevent="store()">
             <div class="grid grid-cols-3 gap-10 mt-10">
@@ -52,7 +52,7 @@ let form = useForm({
 })
 
 const store = ()=>{
-    form.post('/admin/user',{
+    form.post(route('admin.users.store'),{
         onSuccess: ()=>{
             form.reset();
         }

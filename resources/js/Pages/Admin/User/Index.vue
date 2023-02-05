@@ -1,6 +1,6 @@
 <template>
     <div class="flex justify-between items-center">
-        <Link href="/admin/user/create" class="p-2 px-4 bg-green-600 text-white font-bold">Create</Link>
+        <Link :href="route('admin.users.create')" class="p-2 px-4 bg-green-600 text-white font-bold">Create</Link>
         <div>
             <input type="text" class="bg-gray-200 p-2 rounded-lg text-black" v-model="search">
         </div>
