@@ -9,13 +9,24 @@
             </tr>
         </thead>
         <tbody class="bg-gray-100 text-center">
-            <tr v-for="(item, index) in data" :key="index">
+            <tr v-for="(item, index) in data.data" :key="index">
                 <td class="p-3">{{item.name}}</td>
                 <td class="p-3">{{item.email}}</td>
                 <td class="p-3">edit</td>
             </tr>
         </tbody>
     </table>
+
+    <div class="mt-4">
+        <Link
+        v-for="(item, index) in data.links"
+        :key="'links'+index"
+        v-html="item.label"
+        class="px-3 py-2 rounded shadow"
+        :href="item.url"
+        :class="[!item.url?'bg-gray-200':'', data.current_page == item.label ? 'bg-blue-400 text-white' :'']"
+        ></Link>
+    </div>
 </template>
 
 <script setup>
