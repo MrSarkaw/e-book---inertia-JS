@@ -37,18 +37,21 @@
 
 <script setup>
 import {Link, router} from '@inertiajs/vue3'
+import debounce from 'lodash/debounce'
+
 let props = defineProps(['data', 'q'])
 
 let search = ref(props.q)
 
-watch(search, value=>{
+watch(search, debounce(value => {
     router.get('/admin/user',{
         q:value,
     },{
         preserveState:true,
-        preserveScroll:true
+        preserveScroll:true,
+        replace: true
     })
-})
+}, 1000))
 
 
 </script>

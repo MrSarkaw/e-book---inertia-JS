@@ -20,6 +20,6 @@ Route::get('/contact', function () {
 
 
 Route::prefix('admin')->group(function(){
-    Route::resource('user', UserController::class);
+    Route::resource('user', UserController::class)->names('admin.users');
 });
 
